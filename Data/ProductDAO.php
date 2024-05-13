@@ -60,7 +60,7 @@
         }
 
         /* CREATE */
-        public function addProduct(int $id, string $name, float $price, string $description, int $promoId, int $seasonId): bool {
+        public function addProduct(string $name, float $price, string $description, int $promoId, int $seasonId): bool {
             global $dbConn;
             $sql = 'insert into products (name, price, description, promo_id, season_id) 
                     values (:name, :price, :description, :promo_id, :season_id)';
