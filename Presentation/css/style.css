@@ -1,0 +1,18 @@
+/* ** DEBUG & DEVELOP ** */
+
+div, section, article, nav, p, header, footer, form, table, ul, li {
+    outline: 1px dashed red;
+}
+
+html, body, div, section, article, aside, nav, header, footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* ** TYPOGRAPHICS ** */
+
+/* ** COLOURS ** */
+
+/* ** IMAGES ** */
+
+/* ** STRUCTURE ** */
