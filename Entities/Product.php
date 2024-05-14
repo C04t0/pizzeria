@@ -9,15 +9,15 @@
         private string $name;
         private float $price;
         private string $description;
-        private int $seasonal;
+        private int $seasonId;
         private int $promoId;
 
-        public function __construct(int $id, string $name, float $price, string $description, int $seasonal, int $promoId) {
+        public function __construct(int $id, string $name, float $price, string $description, int $seasonId, int $promoId) {
             $this->id = $id;
             $this->name = $name;
             $this->price = $price;
             $this->description = $description;
-            $this->seasonal = $seasonal;
+            $this->seasonId = $seasonId;
             $this->promoId = $promoId;
         }
         public function getId(): int {
@@ -31,5 +31,11 @@
         }
         public function getDescription(): string {
             return $this->description;
+        }
+        public function getSeasonId(): int {
+            return $this->seasonId;
+        }
+        public function getPromoId(): int {
+            return $this->promoId;
         }
     }

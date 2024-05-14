@@ -16,7 +16,7 @@
         public function __construct(int $id, string $email, string $password, string $name, string $lastName, int $addressId, string $phone, bool $promo) {
             $this->id = $id;
             $this->email = $email;
-            $this->password = $password;
+            $this->password = md5($password);
             $this->name = $name;
             $this->lastName = $lastName;
             $this->addressId = $addressId;

@@ -15,6 +15,10 @@
             global $customerDAO;
             return $customerDAO->getById($id);
         }
+        public function getAll(): ?array {
+            global $customerDAO;
+            return $customerDAO->getAllCustomers();
+        }
 
         /* C */
         public function addCustomer(string $email, string $password, string $name, string $lastName, string $addressId, string $phone, bool $promo): bool {

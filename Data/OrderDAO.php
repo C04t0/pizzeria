@@ -55,7 +55,7 @@
         }
 
         /* CREATE */
-        public function addOrder(int $customerId, string $date, string $time, string $remark): bool {
+        public function addOrder(int $customerId, string $date, string $time, string $remark): string {
             global $dbConn;
             $sql = 'insert into orders (date, time, customer_id, remark) 
                     values (:customerId, :date, :time, :remark)';
@@ -67,10 +67,11 @@
             $statement->bindParam(':time', $time);
             $statement->bindParam(':remark', $remark);
             $statement->execute();
+            $id = $dbh->lastInsertId();
 
             $dbh = null;
 
-            return true;
+            return $id;
         }
 
         /* UPDATE */

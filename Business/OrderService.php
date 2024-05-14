@@ -28,7 +28,7 @@
         }
 
         /* C */
-        public function addOrder(int $customerId, string $date, string $time, string $remark): bool {
+        public function addOrder(int $customerId, string $date, string $time, string $remark): string {
             global $orderDAO;
             return $orderDAO->addOrder($customerId, $date, $time, $remark);
         }
@@ -56,4 +56,5 @@
             global $orderLineDAO;
             return $orderLineDAO->deleteOrderLine($orderId, $productId);
         }
+
     }

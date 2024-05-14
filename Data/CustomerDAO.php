@@ -38,7 +38,33 @@
 
             return $customer;
         }
+        public function getAllCustomers(): ?array {
+            global $dbConn;
+            $customers = array();
+            $sql = 'select id, email, password, name, last_name, address_id, phone, promo from customers';
+            $dbh = $dbConn->connect();
 
+            $statement = $dbh->query($sql);
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($result as $row) {
+                $customer = new Customer(
+                    (int)$row['id'],
+                    $row['email'],
+                    $row['password'],
+                    $row['name'],
+                    $row['last_name'],
+                    (int)$row['address_id'],
+                    $row['phone'],
+                    (bool)$row['promo']
+                );
+                $customers[] = $customer;
+            }
+
+            $dbh = null;
+
+            return $customers;
+        }
         /* CREATE */
         public function addCustomer(string $email, string $password, string $name, string $last_name, string $address_id, string $phone, bool $promo) : bool {
             global $dbConn;

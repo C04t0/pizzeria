@@ -10,9 +10,35 @@ html, body, div, section, article, aside, nav, header, footer {
 }
 
 /* ** TYPOGRAPHICS ** */
-
+html {
+    font-family: Helvetica, sans-serif;
+}
 /* ** COLOURS ** */
-
+.overview {
+    background-color: whitesmoke;
+}
+.important {
+    color: red;
+}
 /* ** IMAGES ** */
+html {
+    background-image: url("Presentation/img/italian_flag.png");
+    background-size: cover;
+    background-position: center;
 
+}
 /* ** STRUCTURE ** */
+
+html {
+    text-align: center;
+}
+#wrapper {
+    width: 80%;
+    margin: auto;
+}
+.overview {
+    margin: auto;
+    padding: 0 5%;
+    border-radius: 30px
+
+}
