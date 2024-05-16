@@ -8,11 +8,18 @@
                 return $customer->getId();
             }
         }
+
         return null;
     }
-    function checkDeliveryAddress($cityName): bool {
+    function checkDeliveryAddress($zipcode): bool {
         global $addressService;
+        $city = $addressService->getCityByZipcode($zipcode);
 
+        if ($city->isDeliverable()) {
+            return true;
+        }
+
+        return false;
     }
 
 

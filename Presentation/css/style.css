@@ -1,36 +1,51 @@
 /* ** DEBUG & DEVELOP ** */
-
+/*
 div, section, article, nav, p, header, footer, form, table, ul, li {
     outline: 1px dashed red;
 }
-
+*/
 html, body, div, section, article, aside, nav, header, footer {
     margin: 0;
     padding: 0;
 }
 
 /* ** TYPOGRAPHICS ** */
+@font-face {
+    font-family: RistoranteTitle;
+    src: url("Presentation/fonts/Ristorante.ttf") format("truetype");
+}
 html {
     font-family: Helvetica, sans-serif;
 }
+#titleSpan {
+    font-family: RistoranteTitle;
+    font-size: 24px;
+}
+
 /* ** COLOURS ** */
 .overview {
     background-color: whitesmoke;
 }
-.important {
+.important, .error {
     color: red;
+}
+.success {
+    color: green;
+}
+.importantInfo {
+    background-color: gray;
 }
 /* ** IMAGES ** */
 html {
     background-image: url("Presentation/img/italian_flag.png");
     background-size: cover;
     background-position: center;
-
 }
-/* ** STRUCTURE ** */
 
+/* ** STRUCTURE ** */
 html {
     text-align: center;
+    min-width: 1024px;
 }
 #wrapper {
     width: 80%;
@@ -40,5 +55,9 @@ html {
     margin: auto;
     padding: 0 5%;
     border-radius: 30px
-
+}
+.importantInfo {
+    margin: auto;
+    width: 42%;
+    border-radius: 20px
 }

@@ -20,13 +20,11 @@
             </section>
             <section id="middleContent" class="middle">
                 <div id="pizzaMenu" class="menu">
-                    <p class="importantInfo">
-                        <caption class="important">!  IMPORTANT  !</caption><br>
-                        <caption>
-                            All pizzas are made with tomato sauce unless otherwise specified.
-                            Cheese is a mixture of vegan cheese and edammer.
-                        </caption><br>
-                    </p>
+                    <div class="importantInfo">
+                        <h3 class="important">!  IMPORTANT  !</h3>
+                    <caption><b>All pizzas are made with tomato sauce unless otherwise specified.</b></caption><br>
+                    <caption><b>Cheese is a mixture of vegan cheese and emmentaler.</b></caption><br>
+                    </div>
                     <table class="overview">
                         <tr>
                             <th>Name</th>
@@ -37,9 +35,14 @@
                         </tr>
                         <?php echo generateProductList($productList); ?>
                     </table>
+                    <div id="accountNoAccount">
+                        <button id="account" onclick="location.href='login.php'">I have an account</button>
+                        <button id="noAccount" onclick="location.href='shoppingCart.php'">I don't have an acount</button>
+                    </div>
                     <form method="post" action="pizzeria.php?action=addProduct">
                         <label for="productSelect">Choose a product: </label>
                         <select id="productSelect" name="productSelect">
+                            <option selected value="">Choose here</option>
                             <?php echo generateProductSelect($productList); ?>
                         </select>
                         <input type="submit" value="Add to shopping cart">
@@ -49,10 +52,16 @@
             <section id="bottomContent" class="bottom">
                 <footer>
                     <p>
-                        <h3>Check if we deliver to your address.</h3>
+                        <h3>Check if we deliver to your address!</h3>
+                        <?php
+                            echo generateErrors($error);
+                            echo generateDeliverable($success);
+                        ?>
                     </p>
                     <form method="post" action="pizzeria.php?action=checkAddress">
-                        <input type="text" value=""
+                        <label for="zipcode">Enter your zipcode</label>
+                        <input type="text" name="zipcode">
+                        <input type="submit" value="Check for delivery">
                     </form>
                 </footer>
             </section>

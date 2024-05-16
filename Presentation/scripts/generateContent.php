@@ -3,6 +3,7 @@
     declare(strict_types=1);
 
     function generateProductList($productList): ?string {
+        global $productService;
         ob_start();
 
         foreach ($productList as $product) {
@@ -31,7 +32,7 @@
         global $productService;
         ob_start();
 
-        if (is_null($orderLines)) {
+        if (empty($orderLines)) {
             echo "<tr>"
                     . "<td colspan='6'>You haven't added anything to the order yet.</td>"
                     . "</tr>";
@@ -68,8 +69,27 @@
     }
     function generateErrors($error): ?string {
         ob_start();
+
         if (!is_null($error)) {
             echo "<p class='error'>" . $error . "</p>";
+        }
+
+        return ob_get_clean();
+    }
+    function generateDeliverable($success): ?string {
+        ob_start();
+
+        if (!is_null($success)) {
+            echo "<p class='success'>We deliver to your city!</p>";
+        }
+
+        return ob_get_clean();
+    }
+    function generateLoginSuccess($success): ?string {
+        ob_start();
+
+        if ($success) {
+            echo "<p class='success'>You have been successfully logged in!</p>";
         }
 
         return ob_get_clean();

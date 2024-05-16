@@ -22,6 +22,10 @@
             global $cityDAO;
             return $cityDAO->getById($id);
         }
+        public function getCityByZipcode(string $zipcode): ?City {
+            global $cityDAO;
+            return $cityDAO->getByZipcode($zipcode);
+        }
 
         /* C */
         public function addAddress(int $cityId, string $street, int $number, string $bus): bool {

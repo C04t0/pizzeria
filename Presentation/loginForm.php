@@ -19,17 +19,20 @@
                 </nav>
             </section>
             <section id="middleContent" class="middle">
-                <form method="post" action="../pizzeria.php?action=login">
+                <form method="post" action="pizzeria.php?action=login">
                     <label for="email">Email address: </label>
                     <input type="text" id="email" name="email" required><br>
                     <label for="password">Password: </label>
                     <input type="password" id="password" name="password" required><br>
                     <input type="submit" value="Login">
                 </form>
-                <?php echo generateErrors($error); ?>
+                <?php
+                    echo generateErrors($error);
+                    echo generateLoginSuccess($success);
+                ?>
             </section>
             <section id="bottomContent" class="bottom">
-                <button onclick="location.href='login.php?action=logout'" value="Logout"></button>
+                <button onclick="location.href='login.php?action=logout'" value="Logout">Logout</button>
             </section>
         </div>
     </body>
