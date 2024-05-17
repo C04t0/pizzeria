@@ -15,6 +15,11 @@
             $sql = 'select id, name, price, description, promo_id, season_id from products where id = :id';
             $dbh = $dbConn->connect();
 
+            if ($id == 0) {
+                $dbh = null;
+                return null;
+            }
+
             $statement = $dbh->prepare($sql);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();

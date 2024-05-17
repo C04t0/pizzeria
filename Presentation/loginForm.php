@@ -15,7 +15,7 @@
             <section id="topSection" class="top">
                 <nav id="topNav" class="navigation">
                     <a href="pizzeria.php?action=return">Return to main menu</a>
-                    <a href="pizzeria.php?action=shoppingCart">Shopping Basket</a>
+                    <a href="pizzeria.php?action=shoppingCart">Shopping cart</a>
                 </nav>
             </section>
             <section id="middleContent" class="middle">

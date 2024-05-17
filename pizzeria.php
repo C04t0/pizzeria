@@ -9,10 +9,12 @@
     use Business\ProductService;
     require_once "Presentation/scripts/handlerScripts.php";
     require_once "Presentation/scripts/generateContent.php";
+    require_once "Presentation/scripts/cartFunctions.php";
 
     $error = null;
     $success = null;
     $account = false;
+    $_SESSION['account'] = "";
     $orderService = new OrderService();
     $addressService = new AddressService();
     $productService = new ProductService();
@@ -29,6 +31,9 @@
             case 'addProduct':
                 if (!isset($_SESSION['customer_id'])) {
                     $account = true;
+                    addToCart((int)$_POST['product_id'], (int)$_POST['amount']);
+                } else {
+                    $_SESSION['account'] = "noAccount";
                 }
                 include "Presentation/home.php";
                 break;

@@ -34,12 +34,13 @@
         ob_start();
 
         foreach ($cart as $productId => $amount) {
-            if ($productId === 0) {
+            $product = $productService->getProduct($productId);
+            if (empty($product)) {
                 echo "<tr>"
-                    . "<td colspan='6'>You haven't added anything to the order yet.</td>"
+                    . "<td colspan='6' class='error'>Your cart is empty!</td>"
                     . "</tr>";
+                exit;
             } else {
-                $product = $productService->getProduct($productId);
                 echo "<tr>"
                     . "<td>" . $product->getName() . "</td>"
                     . "<td>" . $amount . "</td>"
@@ -61,7 +62,7 @@
         foreach ($productList as $product) {
             echo "<option value='"
                 . $product->getId()
-                . "'>"
+                . "' name='product_id'>"
                 . $product->getName()
                 . "</option>";
         }
@@ -114,9 +115,38 @@
         if ($account) {
             echo "<div id='accountNoAccount'>"
                     . "<h4 class='error'>Please log in first if you have an account!</h4>"
-                    . "<button id='account' onclick=" . $loginLink . ">I have an account</button>"
-                    . "<button id='noAccount' onclick=" . $shoppingCartLink . ">I don't have an acount</button>"
+                    . "<button id='account' type='submit' name='account' value='account' onclick="
+                    . $loginLink
+                    . ">I have an account</button>"
+                    . "<button id='noAccount' type='submit' name='account' value='noAccount' onclick="
+                    . $shoppingCartLink
+                    . ">I don't have an acount</button>"
                     . "</div>";
+        }
+
+        return ob_get_clean();
+    }
+    function generateAddressInfo($account): ?string {
+        ob_start();
+
+        if ($account === "noAccount") {
+           echo "<label for='addressInfo'>Please enter the delivery address: </label>"
+                    . "<form id='addressInfo' method='post' action='cart.php?action=addressInfo'>"
+                    . "<label for='name'>Name: </label>"
+                    . "<input type='text' id='name' name='name' required>"
+                    . "<label for='lastName'>Last name: </label>"
+                    . "<input type='text' id='lastName' name='lastName'>"
+                    . "<label for='street'>Street: </label>"
+                    . "<input type='text' id='street' name='street' required>"
+                    . "<label for='houseNumber'>House number:</label>"
+                    . "<input type='number' id='houseNumber' name='houseNumber' required>"
+                    . "<label for='bus'>Bus: </label>"
+                    . "<input type='text' id='bus' name='bus'>"
+                    . "<label for='postalCode'>Postal code: </label>"
+                    . "<input type='text' id='postalCode' name='postalCode' required>"
+                    . "<label for='city'>City: </label>"
+                    . "<input type='text' id='city' name='city' required>"
+                    . "</form>";
         }
 
         return ob_get_clean();

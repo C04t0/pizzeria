@@ -29,14 +29,11 @@
     } else {
         $id = checkCustomerCredentials($customerList, $_POST['email'], $_POST['password']);
 
-        if (is_null($id)) {
+        if (!$id) {
             $error = "Invalid credentials";
         } else {
             $success = "login";
             $_SESSION['customer_id'] = $id;
-            $date = date("d-m-Y");
-            $time = date("H:i");
-            $_SESSION['order_id'] = $orderService->addOrder($id, $date, $time, "");
         }
 
         include "Presentation/loginForm.php";

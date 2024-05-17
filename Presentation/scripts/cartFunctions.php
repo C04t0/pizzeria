@@ -28,17 +28,20 @@
             unset($_SESSION['cart'][$productId]);
         }
     }
-    function getAllCartItems() {
-        return $_SESSION['cart'] ?? [];
+    function getAllCartItems(): ?array {
+        return $_SESSION['cart'] ?? null;
     }
-    function getTotalPrice(): float {
+    function getTotalPrice(): ?float {
         $total = 0;
         global $productService;
         $cart = getAllCartItems();
 
         foreach ($cart as $productId => $amount) {
-            $price = $productService->getProduct($productId)->getPrice();
-            $total += $price * $amount;
+            if (!$productId == 0) {
+                $price = $productService->getProduct($productId)->getPrice();
+                $total += $price * $amount;
+
+            }
         }
         return $total;
     }

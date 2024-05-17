@@ -37,10 +37,11 @@
                     </table>
                     <form method="post" action="pizzeria.php?action=addProduct">
                         <label for="productSelect">Choose a product: </label>
-                        <select id="productSelect" name="productSelect">
+                        <select id="productSelect" name="product_id">
                             <option selected value="">Choose here</option>
                             <?php echo generateProductSelect($productList); ?>
                         </select>
+                        <input type="number" name="amount" min="1" required>
                         <input type="submit" value="Add to shopping cart">
                     </form>
                 </div>
