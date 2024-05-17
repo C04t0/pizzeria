@@ -35,10 +35,6 @@
                         </tr>
                         <?php echo generateProductList($productList); ?>
                     </table>
-                    <div id="accountNoAccount">
-                        <button id="account" onclick="location.href='login.php'">I have an account</button>
-                        <button id="noAccount" onclick="location.href='shoppingCart.php'">I don't have an acount</button>
-                    </div>
                     <form method="post" action="pizzeria.php?action=addProduct">
                         <label for="productSelect">Choose a product: </label>
                         <select id="productSelect" name="productSelect">
@@ -63,6 +59,7 @@
                         <input type="text" name="zipcode">
                         <input type="submit" value="Check for delivery">
                     </form>
+                    <?php echo generateAccountNoAccount($account)?>
                 </footer>
             </section>
         </div>

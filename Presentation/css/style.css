@@ -35,6 +35,9 @@ html {
 .importantInfo {
     background-color: gray;
 }
+#topNav {
+    background-color: rgb(18, 140, 53);
+}
 /* ** IMAGES ** */
 html {
     background-image: url("Presentation/img/italian_flag.png");
@@ -45,19 +48,31 @@ html {
 /* ** STRUCTURE ** */
 html {
     text-align: center;
-    min-width: 1024px;
+    min-width: 1280px;
 }
 #wrapper {
     width: 80%;
     margin: auto;
 }
+a {
+    text-decoration: none;
+}
 .overview {
     margin: auto;
-    padding: 0 5%;
+    padding: 2% 5%;
     border-radius: 30px
 }
+#topNav {
+    margin: auto;
+    width: 42%;
+}
+
 .importantInfo {
     margin: auto;
     width: 42%;
-    border-radius: 20px
+    border-radius: 20px;
+    padding: 1%;
+}
+#accountNoAccount {
+    margin-top: 5%;
 }

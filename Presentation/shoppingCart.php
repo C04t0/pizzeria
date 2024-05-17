@@ -1,5 +1,5 @@
 <?php
-    declare(strict_types=1);
+    require_once "Presentation/scripts/generateContent.php";
 ?>
 
 
@@ -29,12 +29,20 @@
                         <th>Extra</th>
                         <th>Total</th>
                     </tr>
-                    <?php generateShoppingCart($orderLines); ?>
+                    <?php generateShoppingCart(); ?>
                 </table>
+                <form method="post" action="cart.php?action=add">
+                    <label for="productSelect">Choose a product: </label>
+                    <select id="productSelect" name="productSelect">
+                        <option selected value="">Choose here</option>
+                        <?php echo generateProductSelect($productList); ?>
+                    </select>
+                    <input type="submit" value="Add to shopping cart">
+                </form>
             </section>
             <section id="bottomContent" class="bottom">
                 <footer>
-                    <form method="post" action="pizzeria.php?action=checkout">
+                    <form method="post" action="cart.php?action=checkout">
                         <input type="submit" value="Checkout">
                     </form>
                 </footer>

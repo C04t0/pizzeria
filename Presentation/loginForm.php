@@ -32,7 +32,7 @@
                 ?>
             </section>
             <section id="bottomContent" class="bottom">
-                <button onclick="location.href='login.php?action=logout'" value="Logout">Logout</button>
+                <?php echo generateLogout($success); ?>
             </section>
         </div>
     </body>

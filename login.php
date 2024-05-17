@@ -9,8 +9,8 @@
     require_once "Presentation/scripts/handlerScripts.php";
     require_once "Presentation/scripts/generateContent.php";
 
-    $error = "";
-    $success = null;
+    $error = null;
+    $success = false;
     $orderService = new OrderService();
     $customerService = new CustomerService();
     $customerList = $customerService->getAll();
@@ -32,7 +32,7 @@
         if (is_null($id)) {
             $error = "Invalid credentials";
         } else {
-            $success = true;
+            $success = "login";
             $_SESSION['customer_id'] = $id;
             $date = date("d-m-Y");
             $time = date("H:i");
@@ -44,8 +44,7 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         session_destroy();
-        header("location: pizzeria.php");
-        exit;
+        $success = "You have been successfully logged out.";
     }
 
 

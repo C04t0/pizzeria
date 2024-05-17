@@ -12,6 +12,7 @@
 
     $error = null;
     $success = null;
+    $account = false;
     $orderService = new OrderService();
     $addressService = new AddressService();
     $productService = new ProductService();
@@ -25,12 +26,17 @@
 
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
+            case 'addProduct':
+                if (!isset($_SESSION['customer_id'])) {
+                    $account = true;
+                }
+                include "Presentation/home.php";
+                break;
             case 'return':
                 include 'Presentation/home.php';
                 break;
             case 'shoppingCart':
-                $orderLines = $orderService->getAllOrderLinesFromOrder($_SESSION['orderId']);
-                include "Presentation/shoppingCart.php";
+                header("Location: cart.php");
                 break;
             case 'checkAddress':
                 $deliverable = checkDeliveryAddress($_POST['zipcode']);
@@ -42,7 +48,7 @@
                 include "Presentation/home.php";
                 break;
             case 'login':
-                include 'Presentation/loginForm.php';
+                header("Location: login.php");
                 break;
         }
     } else {
